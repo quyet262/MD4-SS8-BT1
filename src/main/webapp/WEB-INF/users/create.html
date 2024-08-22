@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout :: head">
+    <title>User</title>
+</head>
+
+<body>
+<h3>Add User</h3>
+<p>
+    <a th:href="@{/blogs}">
+        Back to User list
+    </a>
+</p>
+<div id="form">
+    <form th:action="@{/users/create}" th:object="${user}"
+          method="POST" novalidate="novalidate">
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <label for="fistName">Fist Name: </label>
+            <input type="text" id="fistName" th:field="*{fistName}"/>
+            <span th:if="${#fields.hasErrors('fistName')}" th:errors="*{fistName}"></span>
+        </div>
+        <div>
+            <label for="lastName">Last Name: </label>
+            <input type="text" id="lastName" th:field="*{lastName}"/>
+            <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+        </div>
+        <div>
+            <label for="phoneNumber">Phone Number: </label>
+            <input type="text" id="phoneNumber" th:field="*{phoneNumber}"/>
+            <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
+        </div>
+        <div>
+            <label for="age">Age: </label>
+            <input type="text" id="age" th:field="*{age}"/>
+            <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
+        </div>
+        <div>
+            <label for="email">Email: </label>
+            <input type="email" id="email" th:field="*{email}"/>
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+        </div>
+        <input type="submit" value="Save"/>
+    </form>
+</div>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
